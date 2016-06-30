@@ -4,8 +4,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
         percentTextView.setText(percentFormat.format(percent));
 
+
         double tip = billAmount*percent;
         double total=billAmount+tip;
 
@@ -66,11 +69,15 @@ public class MainActivity extends AppCompatActivity {
 
     //update seekbar to appropriate percentage
     private final SeekBar.OnSeekBarChangeListener seekBarListener=
-            new SeekBar.OnSeekBarChangeListener() {
+            new OnSeekBarChangeListener() {
                 @Override
                 public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+
+
                     percent=i/100;
                     calculate();
+
+
                 }
 
                 @Override
